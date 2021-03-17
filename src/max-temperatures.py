@@ -2,6 +2,7 @@ from pyspark import SparkConf, SparkContext
 
 conf = SparkConf().setMaster("local").setAppName("MinTemperatures")
 sc = SparkContext(conf=conf)
+sc.setLogLevel("ERROR")
 
 
 def parseLine(line):
