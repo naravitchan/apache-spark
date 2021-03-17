@@ -1,4 +1,4 @@
-# Apache Spark tutorial with 20+ hands-on examples of analyzing large data sets on your desktop or on Hadoop with Python!
+# Apache Spark tutorial with Python!
 
 https://www.udemy.com/course/taming-big-data-with-apache-spark-hands-on
 https://github.com/PacktPublishing/Frank-Kanes-Taming-Big-Data-with-Apache-Spark-and-Python
