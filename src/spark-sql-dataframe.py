@@ -14,10 +14,10 @@ print("Let's display the name column:")
 people.select("name").show()
 
 print("Filter out anyone over 21:")
-people.filter(people.age < 21).show()
+people.filter(people.age < 21).show(10)
 
 print("Group by age")
-people.groupBy("age").count().show()
+people.groupBy("age").count().orderBy("age").show()
 
 print("Make everyone 10 years older:")
 people.select(people.name, people.age + 10).show()
