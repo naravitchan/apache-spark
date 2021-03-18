@@ -6,17 +6,17 @@ spark = SparkSession.builder.appName("MinTemperatures").getOrCreate()
 spark.sparkContext.setLogLevel("ERROR")
 
 schema = StructType([
-    StructField("customerId", StringType(), True),
-    StructField("smt", IntegerType(), True),
+    StructField("customer_id", StringType(), True),
+    StructField("item_id", IntegerType(), True),
     StructField("cost", FloatType(), True)])
 
 df = spark.read.schema(schema).csv(
     "file:///opt/bitnami/spark/datasets/customer-orders.csv")
 df.printSchema()
 
-customers = df.select("customerId", "cost")
+customers = df.select("customer_id", "cost")
 
-customerCosts = customers.groupBy("customerId").agg(func.round(
+customerCosts = customers.groupBy("customer_id").agg(func.round(
     func.sum("cost"), 2).alias("sumCost"))
 customerCosts.sort(customerCosts.sumCost.desc()).show(customerCosts.count())
 
