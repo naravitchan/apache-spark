@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql import Row
+from pyspark.sql import functions as func
 
 import collections
 
@@ -21,15 +22,23 @@ people = lines.map(mapper)
 schemaPeople = spark.createDataFrame(people).cache()
 schemaPeople.createOrReplaceTempView("people")
 
-# # SQL can be run over DataFrames that have been registered as a table.
-teenagers = spark.sql("SELECT age, avg(numFriends) FROM people GROUP BY age")
+# # # SQL can be run over DataFrames that have been registered as a table.
+# teenagers = spark.sql("SELECT age, avg(numFriends) FROM people GROUP BY age")
 
-# The results of SQL queries are RDDs and support all the normal RDD operations.
-for teen in teenagers.collect():
-    print(teen)
+# # The results of SQL queries are RDDs and support all the normal RDD operations.
+# for teen in teenagers.collect():
+#     print(teen)
 
 # We can also use functions instead of SQL queries:
 schemaPeople.groupBy("age").avg('numFriends').show()
+
+schemaPeople.groupBy("age").avg('numFriends').sort("age").show()
+
+schemaPeople.groupBy("age").agg(func.round(
+    func.avg("numFriends"), 2)).sort("age").show()
+
+schemaPeople.groupBy("age").agg(func.round(
+    func.avg("numFriends"), 2).alias("numFriends_avg")).sort("age").show()
 
 spark.stop()
 # Have to stop
