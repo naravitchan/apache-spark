@@ -2,6 +2,7 @@
 
 https://www.udemy.com/course/taming-big-data-with-apache-spark-hands-on
 https://github.com/PacktPublishing/Frank-Kanes-Taming-Big-Data-with-Apache-Spark-and-Python
+https://github.com/paisit04/udemy-spark
 
 ## Getting Set Up
 https://sundog-education.com/spark-python/
@@ -23,5 +24,5 @@ http://media.sundog-soft.com/es/ml-100k.zip
 spark-submit ratings-counter.py 
 ```
 
-## REF Code
-https://github.com/paisit04/udemy-spark
+## Doc
+https://spark.apache.org/docs/2.2.0/api/python/pyspark.sql.html
