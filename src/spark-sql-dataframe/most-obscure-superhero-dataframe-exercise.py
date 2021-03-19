@@ -21,15 +21,10 @@ def loadMovieNames():
     names = spark.read.schema(schema).option("sep", " ").csv(
         "file:///opt/bitnami/spark/datasets/Marvel-names.txt")
     names.show()
-    # print(names)
     for n in names.collect():
-        if n['name']:
-            na = n['name'].encode('utf-8')
-        name[n['id']] = na
-        # print(n['id'])
-        # print(na)
-    # print(names.show())
-    # print(name)
+        # if n['name']:
+        #     na = n['name']
+        name[n['id']] = n['name']
     return name
 
 
