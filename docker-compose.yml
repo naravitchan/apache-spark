@@ -2,7 +2,8 @@ version: '2'
 
 services:
   spark:
-    image: docker.io/bitnami/spark:3-debian-10
+    image: docker.io/bitnami/spark:3.0.1
+    user: root
     environment:
       - SPARK_MODE=master
       - SPARK_RPC_AUTHENTICATION_ENABLED=no
@@ -10,6 +11,8 @@ services:
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
     ports:
+      - '10000:10000'
+      - '4040:4040'
       - '8080:8080'
     volumes:
       - ./datasets:/opt/bitnami/spark/datasets
